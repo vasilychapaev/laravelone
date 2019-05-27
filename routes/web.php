@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/user/id{id?}', function($id=null) {
+    return $id ? 'User '.$id : 'User not found';
+})->where(['id'=>'[\d]+']);
+Route::view('/form', 'form');
+Route::post('/form', 'UserController@form');
